@@ -972,8 +972,19 @@ require('lazy').setup({
     },
     -- See Commands section for default commands if you want to lazy load on them
     keys = {
-      { '<leader>gc', ':CopilotChat', desc = '[C]opilitChat' },
+      { '<leader>gc', ':CopilotChat<Enter>', desc = '[C]opilitChat' },
     },
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    dependencies = 'nvim-treesitter/nvim-treesitter', -- 依存関係を指定
+    config = function()
+      require('nvim-ts-autotag').setup {
+        enable = true,
+      }
+    end,
+    lazy = true, -- lazy loadingを有効にする
+    event = 'VeryLazy', -- 遅延読み込みのタイミングを指定
   },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
