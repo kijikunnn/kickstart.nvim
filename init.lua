@@ -320,6 +320,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>g', group = '[G]it' },
       },
     },
   },
@@ -953,11 +954,26 @@ require('lazy').setup({
     -- setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
-      { '<leader>lg', '<cmd>LazyGit<cr>', desc = '[L]azy[G]it' },
+      { '<leader>gl', '<cmd>LazyGit<cr>', desc = '[L]azyGit' },
     },
     config = function()
       require('telescope').load_extension 'lazygit'
     end,
+  },
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    dependencies = {
+      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
+      { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+    },
+    build = 'make tiktoken', -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+    keys = {
+      { '<leader>gc', ':CopilotChat', desc = '[C]opilitChat' },
+    },
   },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
